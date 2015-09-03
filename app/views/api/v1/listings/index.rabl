@@ -1,7 +1,7 @@
 node(:links) do
   {
-    "next": @next_page,
-    "prev": @prev_page 
+    "next" => @next_page,
+    "prev" => @prev_page 
   }
 end
 
