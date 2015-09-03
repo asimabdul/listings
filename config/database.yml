@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
+  encoding: utf8
+  reconnect: true
+
+development:
+  <<: *default
+  database: listings_api_development
+
+test:
+  <<: *default
+  database: listings_api_test
+
+production:
+  <<: *default
+  database: listings_api
