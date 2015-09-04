@@ -1,12 +1,3 @@
-node(:links) do
-  {
-    "first" => @first_page,
-    "last"  => @last_page,
-    "next" => @next_page,
-    "prev" => @prev_page 
-  }
-end
-
 node(:type) {"FeatureCollection"}
 
 node(:features) do

@@ -27,8 +27,8 @@ describe Api::V1::ListingsController do
       expect( decoded_response["features"].first["properties"]["id"] ).to eq(@listing.id)
     end
 
-    it "should return pagination links in the response" do
-      expect(decoded_response["links"].keys).to match_array(%w[first last next prev])
+    it "should return pagination links in the response headers" do
+      expect(response.headers.key?("Link")).to be_truthy
     end
 
   end
