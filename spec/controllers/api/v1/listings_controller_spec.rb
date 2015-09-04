@@ -28,8 +28,7 @@ describe Api::V1::ListingsController do
     end
 
     it "should return pagination links in the response" do
-      expect( decoded_response["links"]["next"] ).to eq(nil)
-      expect( decoded_response["links"]["prev"] ).to eq(nil)
+      expect(decoded_response["links"].keys).to match_array(%w[first last next prev])
     end
 
   end
