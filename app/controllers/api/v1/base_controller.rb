@@ -11,19 +11,19 @@ module Api
 
         if !model_scope.first_page?
           prev_page = model_scope.current_page-1
-          @first_page = "<#{url}?#{query_params.merge(:page => 1).to_param}>; rel=first"
+          @first_page = "<#{url}?#{query_params.merge(:page => 1).to_param}>; rel=\"first\""
         end
 
         if !model_scope.last_page?
           next_page = model_scope.current_page+1
-          @last_page = "<#{url}?#{query_params.merge(:page => model_scope.total_pages).to_param}>; rel=last"
+          @last_page = "<#{url}?#{query_params.merge(:page => model_scope.total_pages).to_param}>; rel=\"last\""
         end
         
         next_url_params = query_params.merge(:page => next_page)
         prev_url_params = query_params.merge(:page => prev_page)
 
-        @next_page = "<#{url}?#{next_url_params.to_param}>; rel=next" if next_page
-        @prev_page = "<#{url}?#{prev_url_params.to_param}>; rel=prev" if prev_page
+        @next_page = "<#{url}?#{next_url_params.to_param}>; rel=\"next\"" if next_page
+        @prev_page = "<#{url}?#{prev_url_params.to_param}>; rel=\"prev\"" if prev_page
 
         links = []
 
@@ -31,9 +31,7 @@ module Api
         links << @prev_page
         links << @first_page
         links << @last_page
-
-        links
-        
+        links.compact
       end
       
     end

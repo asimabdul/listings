@@ -28,6 +28,8 @@ describe Api::V1::ListingsController do
     end
 
     it "should return pagination links in the response headers" do
+      allow_any_instance_of(Api::V1::ListingsController).to receive(:pagination_links).and_return(["<http://nextlink.com>"])
+      get :index, {min_bed: 1, min_price: 100000}
       expect(response.headers.key?("Link")).to be_truthy
     end
 

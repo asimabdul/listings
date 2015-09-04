@@ -5,7 +5,7 @@ module Api
       def index
         @listings = Listing.search(filters).page(params[:page])
         links = pagination_links(@listings, api_v1_listings_url, request.query_parameters)
-        response.headers["Link"] = links
+        response.headers["Link"] = links if !links.empty?
       end
 
       private
